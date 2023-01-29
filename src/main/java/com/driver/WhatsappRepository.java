@@ -25,7 +25,16 @@ public class WhatsappRepository {
 
        private int id=0;
 
-       public String createUser(String name, String mobile) throws Exception {
+    public WhatsappRepository() {
+        this.userHashMap = new HashMap<>();
+        this.groupHashMap = new HashMap<>();
+        this.messageHashMap = new HashMap<>();
+        this.groupMemHashMap= new HashMap<>();
+        this.userMessageHashMap = new HashMap<>();
+        this.adminHashMap = new HashMap<>();
+    }
+
+    public String createUser(String name, String mobile) throws Exception {
            if(!userHashMap.containsKey(mobile)) {
                userHashMap.put(mobile, new User(name, mobile));
                return "SUCCESS";
