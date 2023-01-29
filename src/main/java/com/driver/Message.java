@@ -6,12 +6,12 @@ import java.util.Date;
 
 public class Message {
 
-    private int id=0;
+    private int id;
     private String content;
     private LocalDate timestamp;
 
-    public Message(String content) {
-        this.id++;
+    public Message(int id,String content) {
+        this.id=id;
         this.content = content;
         this.timestamp = LocalDate.now();
     }

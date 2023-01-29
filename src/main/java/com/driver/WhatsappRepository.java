@@ -23,6 +23,8 @@ public class WhatsappRepository {
 
        private int groupCount=0;
 
+       private int id=0;
+
        public String createUser(String name, String mobile) throws Exception {
            if(!userHashMap.containsKey(mobile)) {
                userHashMap.put(mobile, new User(name, mobile));
@@ -53,7 +55,8 @@ public class WhatsappRepository {
 
        public int createMessage(String content){
 
-           Message message = new Message(content);
+           id++;
+           Message message = new Message(id,content);
            return message.getId();
        }
 
