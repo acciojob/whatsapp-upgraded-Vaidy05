@@ -26,8 +26,12 @@ public class WhatsappController {
     public String createUser(String name, String mobile) throws Exception {
         //If the mobile number exists in database, throw "User already exists" exception
         //Otherwise, create the user and return "SUCCESS"
-
-        return whatsappService.createUser(name, mobile);
+      try {
+          return whatsappService.createUser(name, mobile);
+      }
+      catch (Exception e){
+          return null;
+      }
     }
 
     @PostMapping("/add-group")
@@ -41,7 +45,12 @@ public class WhatsappController {
         //For example: Consider userList1 = {Alex, Bob, Charlie}, userList2 = {Dan, Evan}, userList3 = {Felix, Graham, Hugh}.
         //If createGroup is called for these userLists in the same order, their group names would be "Group 1", "Evan", and "Group 2" respectively.
 
-        return whatsappService.createGroup(users);
+        try {
+            return whatsappService.createGroup(users);
+        }
+        catch(Exception e){
+            return null;
+        }
     }
 
     @PostMapping("/add-message")
@@ -49,7 +58,12 @@ public class WhatsappController {
         // The 'i^th' created message has message id 'i'.
         // Return the message id.
 
-        return whatsappService.createMessage(content);
+        try {
+            return whatsappService.createMessage(content);
+        }
+        catch(Exception e){
+            return 0;
+        }
     }
 
     @PutMapping("/send-message")
